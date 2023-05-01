@@ -1,0 +1,22 @@
+.bk-image-small {
+    background-image: url(../../assets/home/mobile/image-header.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    height: 90vh;
+}
+
+@media (min-width: 768px) {
+    .bk-image-small {
+        background-image: url(../../assets/home/tablet/image-header.jpg);
+        
+    }
+}
+
+@media (min-width: 1024px) {
+    .bk-image-small {
+        background-image: url(../../assets/home/desktop/image-hero.jpg);
+        
+    }
+}

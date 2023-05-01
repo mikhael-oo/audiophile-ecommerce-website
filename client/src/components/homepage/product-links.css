@@ -1,0 +1,35 @@
+.box {
+    width: 327px;
+    height: 165px;
+}
+
+.img {
+    width: 72.92px;
+    height: 104px;
+    margin-top: -70%;
+}
+
+.imgg {
+    margin-top: -40%;
+}
+
+@media (min-width: 768px) {
+    .box {
+        width: 223px;
+        height: 185px;
+    }
+
+   
+}
+
+@media (min-width: 992px) {
+    .box {
+        width: 350px;
+        height: 204px;
+    }
+
+    .img {
+        width: 140px;
+        height: 160px;
+    }
+}

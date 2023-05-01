@@ -1,0 +1,93 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+  box-sizing: border-box;
+}
+
+.h1 {
+    font-weight: bold;
+    font-size: 56px;
+    text-transform: uppercase;
+    line-height: 58px;
+    letter-spacing: 2px;
+  }
+
+/* H2 */
+.h2 {
+    font-family: Manrope, sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    text-transform: uppercase;
+    line-height: 44px;
+    letter-spacing: 1.5px;
+}
+  
+/* Body */
+.body {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 25px;
+}
+  
+/* H3 */
+.h3 {
+    font-weight: 700;
+    font-size: 32px;
+    text-transform: uppercase;
+    line-height: 36px;
+    letter-spacing: 1.15px;
+}
+  
+/* H4 */
+.h4 {
+    font-weight: 700;
+    font-size: 28px;
+    text-transform: uppercase;
+    line-height: 38px;
+    letter-spacing: 2px;
+}
+  
+/* H5 */
+.h5 {
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+    line-height: 33px;
+    letter-spacing: 1.7px;
+}
+  
+/* H6 */
+.h6 {
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    line-height: 24px;
+    letter-spacing: 1.3px;
+}
+  
+/* Overline */
+.overlined {
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 19px;
+    letter-spacing: 10px;
+
+}
+  
+/* Subtitle */
+.subtitle {
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    line-height: 25px;
+    letter-spacing: 1px;
+}
