@@ -8,7 +8,7 @@ import Twitter from "../../assets/shared/desktop/icon-twitter.svg"
 export default function Footer() {
     return (
       <footer className="w-full bg-main-black">
-        <div className="w-full p-4  md:w-[90%] lg:w-[80%] mx-auto grid gap-x-4 gap-y-2 grid-cols-6 ">
+        <div className="w-full p-8  md:w-[90%] lg:w-[80%] mx-auto  grid gap-x-2 grid-cols-6 ">
           <div className="logo col-start-1 col-span-2 row-start-1 row-span-1">
             <img src={Logo} alt="audiophile logo" />
           </div>

@@ -4,7 +4,7 @@ import AudioMobile from "../../assets/shared/mobile/image-best-gear.jpg"
 
 export default function Audio() {
     return (
-        <div className=" max-w-[1110px] md:w-[70%] lg:w-[100%] my-16 hero rounded-none justify-stretch flex gap-4 flex-col md:flex-row lg:flex-row ">
+        <div className=" max-w-[1110px] md:w-[70%] lg:w-[100%] mx-auto my-16 hero rounded-none justify-stretch flex gap-4 flex-col md:flex-row lg:flex-row ">
             <div className="basis-1/2 mx-auto ">
                 <h2 className=" h2 hero-title mb-4">
                     Bringing you the <br /> <span className="text-main-orange">best</span> audio gear
