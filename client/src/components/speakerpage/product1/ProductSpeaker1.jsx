@@ -7,20 +7,20 @@ import ProductLinks from "../../homepage/ProductLinks";
 import Audio from "../../homepage/Audio";
 import Footer from "../../footer/Footer";
 
-import HeadPhone2Desktop from "../../../assets/product-xx59-headphones/desktop/image-product.jpg";
-import HeadPhone2Tablet from "../../../assets/product-xx59-headphones/tablet/image-product.jpg";
-import HeadPhone2Mobile from "../../../assets/product-xx59-headphones/mobile/image-product.jpg";
-import Gallery1Desktop from "../../../assets/product-xx59-headphones/desktop/image-gallery-1.jpg";
-import Gallery1Tablet from "../../../assets/product-xx59-headphones/tablet/image-gallery-1.jpg";
-import Gallery1Mobile from "../../../assets/product-xx59-headphones/mobile/image-gallery-1.jpg";
-import Gallery2Desktop from "../../../assets/product-xx59-headphones/desktop/image-gallery-2.jpg";
-import Gallery2Tablet from "../../../assets/product-xx59-headphones/tablet/image-gallery-2.jpg";
-import Gallery2Mobile from "../../../assets/product-xx59-headphones/mobile/image-gallery-2.jpg";
-import Gallery3Desktop from "../../../assets/product-xx59-headphones/desktop/image-gallery-3.jpg";
-import Gallery3Tablet from "../../../assets/product-xx59-headphones/tablet/image-gallery-3.jpg";
-import Gallery3Mobile from "../../../assets/product-xx59-headphones/mobile/image-gallery-3.jpg";
+import HeadPhone2Desktop from "../../../assets/product-zx9-speaker/desktop/image-product.jpg";
+import HeadPhone2Tablet from "../../../assets/product-zx9-speaker/tablet/image-product.jpg";
+import HeadPhone2Mobile from "../../../assets/product-zx9-speaker/mobile/image-product.jpg";
+import Gallery1Desktop from "../../../assets/product-zx9-speaker/desktop/image-gallery-1.jpg";
+import Gallery1Tablet from "../../../assets/product-zx9-speaker/tablet/image-gallery-1.jpg";
+import Gallery1Mobile from "../../../assets/product-zx9-speaker/mobile/image-gallery-1.jpg";
+import Gallery2Desktop from "../../../assets/product-zx9-speaker/desktop/image-gallery-2.jpg";
+import Gallery2Tablet from "../../../assets/product-zx9-speaker/tablet/image-gallery-2.jpg";
+import Gallery2Mobile from "../../../assets/product-zx9-speaker/mobile/image-gallery-2.jpg";
+import Gallery3Desktop from "../../../assets/product-zx9-speaker/desktop/image-gallery-3.jpg";
+import Gallery3Tablet from "../../../assets/product-zx9-speaker/tablet/image-gallery-3.jpg";
+import Gallery3Mobile from "../../../assets/product-zx9-speaker/mobile/image-gallery-3.jpg";
 
-export default function ProductHeadPhone3() {
+export default function ProductSpeaker1() {
     const [count, setCount] = useState(0);
     const navigate = useNavigate();
 
@@ -56,11 +56,11 @@ export default function ProductHeadPhone3() {
             <p className="overlined text-light-orange lg:self-start">
               New Product
             </p>
-            <h2 className=" h2 hero-title">XX59 Headphones</h2>
+            <h2 className=" h2 hero-title">ZX9 Speaker</h2>
             <p className="body">
-            Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.
+            Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.
             </p>
-            <h6 className="h6">$899</h6>
+            <h6 className="h6">$4,500</h6>
             <div className="hero-actions flex gap-2 ">
               <div className="bg-light-grey w-[30%] lg:w-[42%] flex justify-center items-center">
                 <button

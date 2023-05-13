@@ -1,3 +1,5 @@
+import {useNavigate} from "react-router-dom";
+
 import Speaker1Desktop from "../../assets/shared/desktop/image-zx9-speaker.jpg";
 import Speaker1Mobile from "../../assets/shared/tablet/image-zx9-speaker.jpg";
 import Speaker1Tablet from "../../assets/shared/mobile/image-zx9-speaker.jpg";
@@ -6,6 +8,10 @@ import Speaker2Mobile from "../../assets/shared/tablet/image-zx7-speaker.jpg";
 import Speaker2Tablet from "../../assets/shared/mobile/image-zx7-speaker.jpg";
 
 export default function Products() {
+
+    const navigate = useNavigate();
+
+
     return (
       <div>
         <div className=" max-w-[1110px] w-[90%] lg:w-[80%] mx-auto my-16 hero rounded-none  flex gap-16 flex-col lg:flex-row ">
@@ -29,7 +35,10 @@ export default function Products() {
                 -- creating new possibilities for more pleasing and practical audio setups.
             </p>
             <div className="hero-actions lg:self-start ">
-              <button className="btn rounded-none border-none text-white bg-main-orange hover:bg-light-orange">
+              <button 
+                className="btn rounded-none border-none text-white bg-main-orange hover:bg-light-orange"
+                onClick={() => navigate("/speakers/one")}
+              >
                 See Product
               </button>
             </div>
@@ -59,7 +68,10 @@ export default function Products() {
                 represents the top of the line powered speakers for home or studio use.
             </p>
             <div className="hero-actions lg:self-start ">
-              <button className="btn rounded-none border-none text-white bg-main-orange hover:bg-light-orange">
+            <button 
+                className="btn rounded-none border-none text-white bg-main-orange hover:bg-light-orange"
+                onClick={() => navigate("/speakers/two")}
+              >
                 See Product
               </button>
             </div>
