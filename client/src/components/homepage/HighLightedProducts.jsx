@@ -9,7 +9,12 @@ import SpeakerMobile1 from "../../assets/home/mobile/image-speaker-zx9.png"
 import SpeakerMobile2 from "../../assets/home/mobile/image-speaker-zx7.jpg"
 import EarphonesMobile1 from "../../assets/home/mobile/image-earphones-yx1.jpg"
 import Audio from "./Audio"
+
+import { useNavigate } from "react-router-dom"
+
 export default function HighlightedProducts() {
+    const navigate = useNavigate()
+
     return (
       <div className="flex flex-col justify-center items-center">
         <div className="  card circles max-w-[1110px] bg-main-orange lg:card-side rounded-none shadow-xl">
@@ -25,7 +30,10 @@ export default function HighlightedProducts() {
               truly remarkable sound.
             </p>
             <div className="card-actions w-[100%]">
-              <button className="btn rounded-none text-white bg-main-black hover:bg-dark-grey">
+              <button 
+                className="btn rounded-none text-white bg-main-black hover:bg-dark-grey"
+                onClick={() => navigate("/speakers/one")}
+              >
                 See Product
               </button>
             </div>
@@ -54,7 +62,12 @@ export default function HighlightedProducts() {
           <div className="w-[80%] md:w-[60%] lg:w-[80%] flex flex-col gap-4 ">
             <h4 className=" h4 hero-title">ZX7 SPEAKER</h4>
             <div className="hero-actions justify-start">
-              <button className="btn btn-outline rounded-none hover:bg-main-black hover:text-white">See Product</button>
+              <button 
+                className="btn btn-outline rounded-none hover:bg-main-black hover:text-white"
+                onClick={() => navigate("/speakers/two")}
+              >
+                See Product
+              </button>
             </div>
           </div>
         </div>
@@ -68,7 +81,12 @@ export default function HighlightedProducts() {
             <div className="bg-light-grey  basis-1/2 mx-auto self-stretch flex flex-col gap-4 items-center justify-center ">
                 <h4 className=" h4 hero-title">YX1 EARPHONES</h4>
                 <div className="hero-actions justify-start">
-                    <button className="btn btn-outline rounded-none hover:bg-main-black hover:text-white">See Product</button>
+                    <button 
+                      className="btn btn-outline rounded-none hover:bg-main-black hover:text-white"
+                      onClick={() => navigate("/earphones/one")}
+                    >
+                      See Product
+                    </button>
                 </div>
             </div>
         </div>

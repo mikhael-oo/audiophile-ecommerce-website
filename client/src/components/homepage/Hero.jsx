@@ -1,6 +1,8 @@
 import "./hero.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+    const navigate = useNavigate();
     return (
       <div
         className="hero bk-image-small "
@@ -14,7 +16,12 @@ export default function Home() {
               Experience natural, lifelike audio and exceptional build quality for the passionate
                 music enthusiast.
             </p>
-            <button className="btn rounded-none text-white bg-main-orange">See Product</button>
+            <button 
+              className="btn rounded-none text-white bg-main-orange"
+              onClick={() => navigate("/headphones/one")}
+            >
+              See Product
+            </button>
           </div>
         </div>
       </div>
