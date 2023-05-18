@@ -2,7 +2,11 @@ import Earphones1Desktop from "../../assets/product-yx1-earphones/desktop/image-
 import Earphones1Tablet from "../../assets/product-yx1-earphones/tablet/image-category-page-preview.jpg"
 import Earphones1Mobile from "../../assets/product-yx1-earphones/mobile/image-category-page-preview.jpg"
 
+import { useNavigate } from "react-router-dom"
+
 export default function Products() {
+    const navigate = useNavigate();
+
     return (
       <div>
         <div className=" max-w-[1110px] w-[90%] lg:w-[80%] mx-auto my-16 hero rounded-none  flex gap-16 flex-col lg:flex-row ">
@@ -26,7 +30,10 @@ export default function Products() {
              sound even in noisy environments with its active noise cancellation feature.
             </p>
             <div className="hero-actions lg:self-start ">
-              <button className="btn rounded-none border-none text-white bg-main-orange hover:bg-light-orange">
+              <button 
+                className="btn rounded-none border-none text-white bg-main-orange hover:bg-light-orange"
+                onClick={() => navigate("/earphones/one")}
+              >
                 See Product
               </button>
             </div>

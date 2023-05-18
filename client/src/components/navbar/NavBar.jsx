@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { RxAvatar } from "react-icons/rx";
-import { NavLink } from "react-router-dom";
+
+import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/audiophile.svg";
 import Hamburger from "../../assets/shared/tablet/icon-hamburger.svg";
 import Cart from "../../assets/shared/desktop/icon-cart.svg";
 
+
 export default function NavBar() {
   const [cartCount, setCartCount] = useState(0);
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    navigate("/checkout");
+  };
 
   return (
     <header className="flex justify-center bg-main-black h-[10vh]">
@@ -79,8 +86,11 @@ export default function NavBar() {
                   <span className="font-bold text-lg">8 Items</span>
                   <span className="text-info">Subtotal: $999</span>
                   <div className="card-actions">
-                    <button className="btn btn-primary btn-block">
-                      View cart
+                    <button 
+                      className="btn btn-primary btn-block rounded-none border-none text-white bg-main-orange hover:bg-light-orange"
+                      onClick={handleCheckout}
+                    >
+                      Checkout
                     </button>
                   </div>
                 </div>
