@@ -39,7 +39,7 @@ const corsOptions = {
     credentials: true,
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,

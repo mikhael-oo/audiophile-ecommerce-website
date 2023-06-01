@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 
+
 import NavBar from "./components/navbar/NavBar";
 import Home from "./components/homepage/Home";
 import HeadPhones from "./components/headphonepage/HeadPhones";
@@ -23,34 +24,36 @@ function App() {
 
 
   return (
-    <BrowserRouter>
-      <div className="App bg-white">
-        <NavBar user={user} />
+    
+      <BrowserRouter>
+        <div className="App bg-white">
+          <NavBar user={user} />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
+          <Routes>
+            <Route path="/" element={<Home />} />
 
-          <Route path="/login" element={<LoginSignup />} />
+            <Route path="/login" element={<LoginSignup />} />
 
-          <Route path="/headphones" element={<HeadPhones />} >
-            
-          </Route>
-          <Route path="/headphones/one" element={<ProductHeadPhone1 />} />
-          <Route path="/headphones/two" element={<ProductHeadPhone2 />} />
-          <Route path="/headphones/three" element={<ProductHeadPhone3 />} />
+            <Route path="/headphones" element={<HeadPhones />} >
+              
+            </Route>
+            <Route path="/headphones/one" element={<ProductHeadPhone1 />} />
+            <Route path="/headphones/two" element={<ProductHeadPhone2 />} />
+            <Route path="/headphones/three" element={<ProductHeadPhone3 />} />
 
-          <Route path="/speakers" element={<Speaker />} />
-          <Route path="/speakers/one" element={<ProductSpeaker1 />} />
-          <Route path="/speakers/two" element={<ProductSpeaker2 />} />
+            <Route path="/speakers" element={<Speaker />} />
+            <Route path="/speakers/one" element={<ProductSpeaker1 />} />
+            <Route path="/speakers/two" element={<ProductSpeaker2 />} />
 
-          <Route path="/earphones" element={<EarPhones />} />
-          <Route path="/earphones/one" element={<ProductEarphone1 />} />
+            <Route path="/earphones" element={<EarPhones />} />
+            <Route path="/earphones/one" element={<ProductEarphone1 />} />
 
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
 
-      </div>
-    </BrowserRouter>
+        </div>
+      </BrowserRouter>
+    
   );
 }
 
