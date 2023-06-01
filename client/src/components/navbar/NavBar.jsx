@@ -7,7 +7,7 @@ import Hamburger from "../../assets/shared/tablet/icon-hamburger.svg";
 import Cart from "../../assets/shared/desktop/icon-cart.svg";
 
 
-export default function NavBar() {
+export default function NavBar({ user }) {
   const [cartCount, setCartCount] = useState(0);
   const navigate = useNavigate();
 
@@ -108,7 +108,11 @@ export default function NavBar() {
               >
                 <li>
                   <a className="justify-between">
-                    Profile
+                    <button
+                      onClick={() => navigate("/login")} 
+                    >
+                      {user ? "Profile" : "Login"}
+                    </button>
                     <span className="badge">New</span>
                   </a>
                 </li>
