@@ -8,7 +8,7 @@ import HeadPhones from "./components/headphonepage/HeadPhones";
 import Speaker from "./components/speakerpage/Speaker";
 import EarPhones from "./components/earphonepage/Earphones";
 import Checkout from "./components/checkout/Checkout"
-import Login from "./components/Login/Login";
+import LoginSignup from "./components/authentication/LoginSignup";
 
 import ProductHeadPhone1 from "./components/headphonepage/product1/ProductHeadPhone1";
 import ProductHeadPhone2 from "./components/headphonepage/product2/ProductHeadPhone2";
@@ -21,20 +21,6 @@ function App() {
   const [count, setCount] = useState(0);
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const getUser = () => {
-      axios.get("http://localhost:5001/auth/login/success")
-        .then((res) => {
-          console.log(res);
-          
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    };
-    getUser();
-  }, []);
-
 
   return (
     <BrowserRouter>
@@ -44,7 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginSignup />} />
 
           <Route path="/headphones" element={<HeadPhones />} >
             
