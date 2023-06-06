@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { UserContext } from "./contexts/UserContext";
 import axios from "axios";
 
 
 import NavBar from "./components/navbar/NavBar";
+import Profile from "./components/navbar/Profile";
 import Home from "./components/homepage/Home";
 import HeadPhones from "./components/headphonepage/HeadPhones";
 import Speaker from "./components/speakerpage/Speaker";
@@ -19,20 +21,56 @@ import ProductSpeaker2 from "./components/speakerpage/product2/ProductSpeaker2";
 import ProductEarphone1 from "./components/earphonepage/product1/ProductEarphone1";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [user, setUser] = useState(null);
+  const [userContext, setUserContext] = useContext(UserContext);
+
+  const verifyUser = useCallback(() => {
+    axios.post("http://localhost:5001/users/refreshToken", {}, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Access-Control-Allow-Credentials": "true",
+      }
+    })
+    .then(res => {
+      if (res.statusText === "OK") {
+        const data = res.data;
+        setUserContext(oldVal => {
+          return {
+            ...oldVal,
+            token: data.token
+          }
+        })
+      } else {
+        setUserContext(oldVal => {
+          return {
+            ...oldVal,
+            token: null
+          }
+        })
+      }
+      setTimeout(verifyUser, 1000 * 60 * 5);
+    })
+  }, [setUserContext])
+
+  useEffect(() => {
+    verifyUser();
+  }, [verifyUser])
+
 
 
   return (
     
       <BrowserRouter>
         <div className="App bg-white">
-          <NavBar user={user} />
+          <NavBar />
 
           <Routes>
             <Route path="/" element={<Home />} />
 
             <Route path="/login" element={<LoginSignup />} />
+            <Route path="/profile" element={<Profile />} />
+
 
             <Route path="/headphones" element={<HeadPhones />} >
               

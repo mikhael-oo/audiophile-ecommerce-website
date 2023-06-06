@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import { RxAvatar } from "react-icons/rx";
 
 import { NavLink, useNavigate } from "react-router-dom";
@@ -9,6 +10,7 @@ import Cart from "../../assets/shared/desktop/icon-cart.svg";
 
 export default function NavBar({ user }) {
   const [cartCount, setCartCount] = useState(0);
+  const [userContext, setUserContext] = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleCheckout = () => {
@@ -108,11 +110,20 @@ export default function NavBar({ user }) {
               >
                 <li>
                   <a className="justify-between">
-                    <button
+                    {
+                      !userContext.token ?
+                      <button
                       onClick={() => navigate("/login")} 
                     >
-                      {user ? "Profile" : "Login"}
+                      Login
+                    </button> :
+                    <button
+                      onClick={() => navigate("/profile")}
+                    >
+                      Profile
                     </button>
+                    }
+                    
                     <span className="badge">New</span>
                   </a>
                 </li>

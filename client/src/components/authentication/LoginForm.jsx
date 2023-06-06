@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function LoginForm() {
@@ -8,6 +9,8 @@ export default function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [userContext, setUserContext] = useContext(UserContext);
+
+    const navigate = useNavigate();
 
     const ErrorBadge = ({ error }) => {
         return (
@@ -66,6 +69,10 @@ export default function LoginForm() {
                         token: data.token
                     }
                 })
+                console.log(userContext)
+                if (userContext.token) {
+                    navigate("/profile");
+                }
             }
         })
         .catch(err => {
@@ -74,7 +81,7 @@ export default function LoginForm() {
             setError(genericErrorMessage);
         })
 
-        console.log(userContext)
+        
     }
 
     const handleEmailChange = (e) => {

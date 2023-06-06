@@ -7,6 +7,7 @@ const {getToken, COOKIE_OPTIONS, verifyUser, getRefreshToken} = require('../auth
 const passport = require('passport');
 
 router.get('/me', verifyUser, (req, res, next) => {
+    
     res.send(req.user);
 });
 
@@ -92,6 +93,7 @@ router.post('/login', passport.authenticate("local"), (req, res, next) => {
 });
 
 router.post("/refreshToken", (req, res, next) => {
+    
     const { signedCookies = {} } = req;
     const { refreshToken } = signedCookies;
 
