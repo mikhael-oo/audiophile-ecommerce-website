@@ -83,7 +83,13 @@ export default function Profile() {
                 <p className="text-xl text-main-black mt-2">{userContext.user ? userContext.user.username : <Loader />}</p>
             </div>
             <div className="flex flex-col items-center justify-center mt-8">
-                <button className="btn btn-primary" onClick={logoutHandler}>Logout</button>
+                {
+                    userContext.user ?
+                    <button className="btn btn-primary" onClick={logoutHandler}>Logout</button>
+                    :
+                    <NavLink to="/login" className="btn btn-primary">Login</NavLink>
+                }
+               
             </div>
         </div>
     )

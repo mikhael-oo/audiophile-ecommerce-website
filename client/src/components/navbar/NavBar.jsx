@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { RxAvatar } from "react-icons/rx";
+import { useCart, useCartDispatch } from "../../contexts/CartContext";
 
 import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/audiophile.svg";
@@ -8,12 +9,19 @@ import Hamburger from "../../assets/shared/tablet/icon-hamburger.svg";
 import Cart from "../../assets/shared/desktop/icon-cart.svg";
 
 
-export default function NavBar({ user }) {
+export default function NavBar() {
   const [cartCount, setCartCount] = useState(0);
   const [userContext, setUserContext] = useContext(UserContext);
+
+  const cart = useCart();
+  const cartDispatch = useCartDispatch();
+
+
   const navigate = useNavigate();
 
   const handleCheckout = () => {
+    console.log(cart)
+    console.log(cartDispatch)
     navigate("/checkout");
   };
 
@@ -85,8 +93,29 @@ export default function NavBar({ user }) {
                 className="mt-3 card card-compact dropdown-content w-52 bg-black shadow"
               >
                 <div className="card-body">
-                  <span className="font-bold text-lg">8 Items</span>
-                  <span className="text-info">Subtotal: $999</span>
+                  {
+                    cart  ?
+                    <p className="text-center">No items in cart</p> :
+                    cart.map((item) => {
+                      return (
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="text-sm">{item.name}</p>
+                            <p className="text-sm">{item.quantity} x ${item.price}</p>
+                          </div>
+                          <div>
+                            <button
+                              className="btn btn-ghost btn-circle"
+                              onClick={() => cartDispatch({type: "REMOVE_ITEM", payload: item})}
+                            >
+                              X
+                            </button>
+                          </div>
+                        </div>
+                      )
+                    })
+                  }
+                  
                   <div className="card-actions">
                     <button 
                       className="btn btn-primary btn-block rounded-none border-none text-white bg-main-orange hover:bg-light-orange"

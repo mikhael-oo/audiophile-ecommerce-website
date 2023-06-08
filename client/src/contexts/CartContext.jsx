@@ -1,6 +1,6 @@
 import { createContext, useReducer, useContext } from "react";
 
-const CartContext = createContext();
+const CartContext = createContext([]);
 
 const CartDispatcher = createContext(null);
 
@@ -24,14 +24,18 @@ export function useCart() {
     return useContext(CartContext);
 }
 
+export function useCartDispatch() {
+    return useContext(CartDispatcher);
+}
+
 function cartReducer( product, action) {
     switch (action.type) {
         case "ADD_TO_CART":
             return {
                 ...product,
-                cart: [...product.cart, action.payload],
+                cart: [...product.cart, action.product],
                 count: product.count + 1,
-                total: product.total + action.payload.price,
+                total: product.total + action.price,
             };
         case "REMOVE_FROM_CART":
             return {
