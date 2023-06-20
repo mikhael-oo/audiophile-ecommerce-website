@@ -70,7 +70,7 @@ export default function LoginForm() {
                     }
                 })
                 console.log(userContext)
-                if (userContext.token) {
+                if (userContext.token !== null) {
                     navigate("/profile");
                 }
             }

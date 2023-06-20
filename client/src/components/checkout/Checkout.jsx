@@ -2,9 +2,13 @@ import {useNavigate} from "react-router-dom"
 import { useState } from "react"
 import "./checkout.css"
 
+import { useCart } from "../../contexts/CartContext"
+
 export default function Checkout() {
     const [selectedOption, setSelectedoption] = useState("money")
     const navigate = useNavigate()
+
+    const cart = useCart()
 
     const navigateBack = () => {
         navigate(-1)
@@ -103,8 +107,37 @@ export default function Checkout() {
 
                 </div>
 
-                <div className="lg:w-[25%] mt-4 bg-white p-4">
+                <div className="lg:w-[30%] mt-4 bg-white p-4">
                     <h6 className="h6">Summary</h6>
+                    {
+                        cart.length === 0  ?
+                        null :
+                        cart.map((item) => {
+                        return (
+                            <div className="flex justify-between gap-4 items-center">
+                            <div className="flex flex-row items-center w-[65%]">
+                                <img className="w-16 mr-2" src={item.image} alt="product image" />
+                                <div className="mr-16">
+                                <p className="text-sm subtitle">{item.product}</p>
+                                <p className="text-sm">${item.price}</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <p className="text-sm">x{item.quantity}</p>
+                            </div>
+                            </div>
+                        )
+                        })
+                    }
+                    {
+                        cart.length === 0 ? null :
+                        <div className="flex justify-between items-center my-8">
+                        <h6 className="h6">Total</h6>
+                        <h6 className="h6">${cart.reduce((acc, item) => acc + item.price, 0)}</h6>
+                        </div>
+
+                    }
                     <button
                         className="btn rounded-none border-none text-white bg-main-orange hover:bg-light-orange"
                     >

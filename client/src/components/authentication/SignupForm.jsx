@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function SignupForm() {
@@ -10,6 +11,8 @@ export default function SignupForm() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
     const [userContext, setUserContext] = useContext(UserContext);
+
+    const navigate = useNavigate();
 
     const ErrorBadge = ({ error }) => {
         return (
@@ -69,6 +72,7 @@ export default function SignupForm() {
                         token: data.token
                     }
                 })
+                navigate("/profile");
             }
         })
         .catch(err => {
