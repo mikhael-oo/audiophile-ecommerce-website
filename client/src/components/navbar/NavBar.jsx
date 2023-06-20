@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { RxAvatar } from "react-icons/rx";
-import { useCart, useCartDispatch } from "../../contexts/CartContext";
+import { useCart, useCartDispatcher } from "../../contexts/CartContext";
 
 import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/audiophile.svg";
@@ -9,12 +9,32 @@ import Hamburger from "../../assets/shared/tablet/icon-hamburger.svg";
 import Cart from "../../assets/shared/desktop/icon-cart.svg";
 
 
-export default function NavBar() {
-  const [cartCount, setCartCount] = useState(0);
+export default function NavBar({ cartCount, setCartCount }) {
+  
   const [userContext, setUserContext] = useContext(UserContext);
 
   const cart = useCart();
-  const cartDispatch = useCartDispatch();
+  const cartDispatch = useCartDispatcher();
+
+  const handleDeleteProduct = (id, quantity) => {
+    cartDispatch({ type: "removed", id: id });
+    setCartCount(cartCount - quantity);
+  };
+
+  const handleCountIncrement = (id) => {
+    cartDispatch({ type: "increaseProductCount", id: id });
+    setCartCount(cartCount + 1);
+  };
+
+  const handleCountDecrement = (id) => {
+    cartDispatch({ type: "reduceProductCount", id: id });
+    setCartCount(cartCount - 1);
+  };
+
+  const handleDeleteAllProducts = () => {
+    cartDispatch({ type: "removedAll" });
+    setCartCount(0);
+  };
 
 
   const navigate = useNavigate();
@@ -90,23 +110,50 @@ export default function NavBar() {
               </label>
               <div
                 tabIndex={0}
-                className="mt-3 card card-compact dropdown-content w-52 bg-black shadow"
+                className="mt-3 card card-compact dropdown-content w-96 bg-black shadow"
               >
                 <div className="card-body">
+                  <div className="flex justify-between items-center">
+                    <h6 className="h6">Cart ({cartCount})</h6>
+                    <button
+                      className="btn btn-ghost subtitle"
+                      onClick={handleDeleteAllProducts}
+                    >
+                      Remove All
+                    </button>
+                  </div>
                   {
-                    cart  ?
+                    cart.length === 0  ?
                     <p className="text-center">No items in cart</p> :
                     cart.map((item) => {
                       return (
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <p className="text-sm">{item.name}</p>
-                            <p className="text-sm">{item.quantity} x ${item.price}</p>
+                        <div className="flex justify-between gap-4 items-center">
+                          <div className="flex flex-row items-center w-[65%]">
+                            <img className="w-16 mr-2" src={item.image} alt="product image" />
+                            <div className="mr-16">
+                              <p className="text-sm subtitle">{item.product}</p>
+                              <p className="text-sm">${item.price}</p>
+                            </div>
+                          </div>
+                          <div className="bg-light-grey w-20 flex justify-center items-center">
+                            <button
+                              className="btn hover:bg-inherit rounded-none border-none text-dark-grey bg-light-grey"
+                              onClick={() => handleCountDecrement(item.id)}
+                            >
+                              -
+                            </button>
+                            <span className="mx-2 text-dark-grey">{item.quantity}</span>
+                            <button
+                              className="btn hover:bg-inherit rounded-none border-none text-dark-grey bg-light-grey"
+                              onClick={() => handleCountIncrement(item.id)}
+                            >
+                              +
+                            </button>
                           </div>
                           <div>
                             <button
                               className="btn btn-ghost btn-circle"
-                              onClick={() => cartDispatch({type: "REMOVE_ITEM", payload: item})}
+                              onClick={() => handleDeleteProduct(item.id, item.quantity)}
                             >
                               X
                             </button>
@@ -115,11 +162,19 @@ export default function NavBar() {
                       )
                     })
                   }
-                  
+                  {
+                    cart.length === 0 ? null :
+                    <div className="flex justify-between items-center my-8">
+                      <h6 className="h6">Total</h6>
+                      <h6 className="h6">${cart.reduce((acc, item) => acc + item.price, 0)}</h6>
+                    </div>
+
+                  }
                   <div className="card-actions">
                     <button 
                       className="btn btn-primary btn-block rounded-none border-none text-white bg-main-orange hover:bg-light-orange"
                       onClick={handleCheckout}
+                      disabled={cart.length === 0}
                     >
                       Checkout
                     </button>

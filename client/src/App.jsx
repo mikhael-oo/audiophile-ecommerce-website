@@ -22,6 +22,7 @@ import ProductEarphone1 from "./components/earphonepage/product1/ProductEarphone
 
 function App() {
   const [userContext, setUserContext] = useContext(UserContext);
+  const [cartCount, setCartCount] = useState(0);
 
   const verifyUser = useCallback(() => {
     axios.post("http://localhost:5001/users/refreshToken", {}, {
@@ -63,7 +64,7 @@ function App() {
     
       <BrowserRouter>
         <div className="App bg-white">
-          <NavBar />
+          <NavBar cartCount={cartCount} setCartCount={setCartCount}/>
 
           <Routes>
             <Route path="/" element={<Home />} />
@@ -75,16 +76,16 @@ function App() {
             <Route path="/headphones" element={<HeadPhones />} >
               
             </Route>
-            <Route path="/headphones/one" element={<ProductHeadPhone1 />} />
-            <Route path="/headphones/two" element={<ProductHeadPhone2 />} />
-            <Route path="/headphones/three" element={<ProductHeadPhone3 />} />
+            <Route path="/headphones/one" element={<ProductHeadPhone1 cartCount={cartCount} setCartCount={setCartCount} />} />
+            <Route path="/headphones/two" element={<ProductHeadPhone2 cartCount={cartCount} setCartCount={setCartCount} />} />
+            <Route path="/headphones/three" element={<ProductHeadPhone3 cartCount={cartCount} setCartCount={setCartCount} />} />
 
             <Route path="/speakers" element={<Speaker />} />
-            <Route path="/speakers/one" element={<ProductSpeaker1 />} />
-            <Route path="/speakers/two" element={<ProductSpeaker2 />} />
+            <Route path="/speakers/one" element={<ProductSpeaker1 cartCount={cartCount} setCartCount={setCartCount} />} />
+            <Route path="/speakers/two" element={<ProductSpeaker2 cartCount={cartCount} setCartCount={setCartCount} />} />
 
             <Route path="/earphones" element={<EarPhones />} />
-            <Route path="/earphones/one" element={<ProductEarphone1 />} />
+            <Route path="/earphones/one" element={<ProductEarphone1 cartCount={cartCount} setCartCount={setCartCount} />} />
 
             <Route path="/checkout" element={<Checkout />} />
           </Routes>

@@ -1,6 +1,8 @@
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useCart, useCartDispatcher } from "../../../contexts/CartContext";
+
 import Features from "./Features";
 import Suggestions from "./Suggestions";
 import ProductLinks from "../../homepage/ProductLinks";
@@ -20,9 +22,32 @@ import Gallery3Desktop from "../../../assets/product-yx1-earphones/desktop/image
 import Gallery3Tablet from "../../../assets/product-yx1-earphones/tablet/image-gallery-3.jpg";
 import Gallery3Mobile from "../../../assets/product-yx1-earphones/mobile/image-gallery-3.jpg";
 
-export default function ProductSpeaker2() {
+import ThumbnailImage from "../../../assets/cart/image-yx1-earphones.jpg"
+import Earphones from "../Earphones";
+
+
+export default function ProductEarphone1({ cartCount, setCartCount}) {
     const [count, setCount] = useState(0);
     const navigate = useNavigate();
+
+    const cartDispatch = useCartDispatcher();
+    const cart = useCart();
+
+    function handleAddToCart() {
+      if (count > 0) {
+        cartDispatch({
+          type: "added",
+          product: "YX1",
+          count: count,
+          price: 599 * count,
+          image: ThumbnailImage
+        })
+        setCartCount(cartCount + count);
+        setCount(0);
+        console.log(cart)
+      }
+        
+    }
 
     const handleCountIncrement = () => {
         setCount(count + 1);
@@ -80,7 +105,10 @@ export default function ProductSpeaker2() {
                 </button>
               </div>
               <div className="w-[30%] lg:w-[42%] flex justify-center items-center">
-                <button className=" w-full btn rounded-none border-none text-white bg-main-orange hover:bg-light-orange">
+                <button 
+                  className=" w-full btn rounded-none border-none text-white bg-main-orange hover:bg-light-orange"
+                  onClick={handleAddToCart}
+                >
                   Add to cart
                 </button>
               </div>
