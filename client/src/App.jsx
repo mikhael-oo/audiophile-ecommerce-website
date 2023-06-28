@@ -25,7 +25,7 @@ function App() {
   const [cartCount, setCartCount] = useState(0);
 
   const verifyUser = useCallback(() => {
-    axios.post("http://localhost:5001/users/refreshToken", {}, {
+    axios.post("https://blooming-plains-31500-7e7eb174fd76.herokuapp.com/users/refreshToken", {}, {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",

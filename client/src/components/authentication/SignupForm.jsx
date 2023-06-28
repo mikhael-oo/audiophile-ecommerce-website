@@ -36,7 +36,7 @@ export default function SignupForm() {
 
         const genericErrorMessage = "Something went wrong, please try again later.";
 
-        axios.post("http://localhost:5001/users/signup", {
+        axios.post("https://blooming-plains-31500-7e7eb174fd76.herokuapp.com/users/signup", {
             firstName: firstName,
             lastName: lastName,
             username: email,

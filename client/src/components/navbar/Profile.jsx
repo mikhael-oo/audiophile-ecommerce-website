@@ -12,7 +12,7 @@ export default function Profile() {
 
     const fetchUserDetails = useCallback(() => {
         console.log("fetching user details");
-        axios.get("http://localhost:5001/users/me", {
+        axios.get("https://blooming-plains-31500-7e7eb174fd76.herokuapp.com/users/me", {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${userContext.token}`,
@@ -55,7 +55,7 @@ export default function Profile() {
     }, [fetchUserDetails, userContext.user])
 
     const logoutHandler = () => {
-        axios.get("http://localhost:5001/users/logout", {
+        axios.get("https://blooming-plains-31500-7e7eb174fd76.herokuapp.com/users/logout", {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${userContext.token}`,

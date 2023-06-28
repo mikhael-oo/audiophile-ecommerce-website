@@ -35,7 +35,7 @@ export default function LoginForm() {
         const genericErrorMessage = "Something went wrong, please try again later.";
 
         axios.post(
-            "http://localhost:5001/users/login", 
+            "https://blooming-plains-31500-7e7eb174fd76.herokuapp.com/users/login", 
             {
                 username: email,
                 password: password
